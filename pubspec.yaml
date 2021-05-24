@@ -1,11 +1,11 @@
 name: movas
 description: Movas framework tools
-version: 0.0.1
+version: 0.0.1+1
 author:
-homepage:
+
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
   flutter: ">=1.17.0 <2.0.0"
 
 dependencies:
@@ -13,8 +13,8 @@ dependencies:
     sdk: flutter
 
   provider: ^5.0.0
-  rxdart: ^0.26.0
-  simple_logger: ^1.7.0
+  rxdart: ^0.27.0
+  simple_logger: ^1.8.0+1
 
 
 

@@ -10,10 +10,10 @@ import '../movas.dart';
 class Router {
   static const String demoRoute = "demo";
 
-  final Map<String, WidgetBuilder> routes;
+  final Map<String, WidgetBuilder>? routes;
   final Map<String, WidgetBuilder> demoRoutes;
 
-  final String initialRoute;
+  final String? initialRoute;
   final bool useDemo;
 
   Router({
@@ -24,9 +24,9 @@ class Router {
   });
 
   Map<String, WidgetBuilder> get calculateAllRoutes =>
-      {...routes, ...demoRoutes, ..._demoHome};
+      {...routes!, ...demoRoutes, ..._demoHome};
 
-  String get calculateInitialRoute => useDemo ? demoRoute : initialRoute;
+  String? get calculateInitialRoute => useDemo ? demoRoute : initialRoute;
 
   Map<String, WidgetBuilder> get _demoHome => useDemo
       ? {

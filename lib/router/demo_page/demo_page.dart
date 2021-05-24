@@ -3,10 +3,10 @@ import 'package:flutter/widgets.dart';
 
 class DemoPage extends StatefulWidget {
   final Map<String, WidgetBuilder> testRoutes;
-  final Map<String, WidgetBuilder> routes;
-  final Widget devDrawer;
+  final Map<String, WidgetBuilder>? routes;
+  final Widget? devDrawer;
 
-  DemoPage({@required this.testRoutes, @required this.routes, this.devDrawer});
+  DemoPage({required this.testRoutes, required this.routes, this.devDrawer});
 
   @override
   _DemoPageState createState() => _DemoPageState();
@@ -19,7 +19,7 @@ class _DemoPageState extends State<DemoPage>
     Tab(text: 'DEMO'),
   ];
 
-  TabController _tabController;
+  TabController? _tabController;
 
   @override
   void initState() {
@@ -30,7 +30,7 @@ class _DemoPageState extends State<DemoPage>
 
   @override
   void dispose() {
-    _tabController.dispose();
+    _tabController!.dispose();
     super.dispose();
   }
 
@@ -57,16 +57,16 @@ class _DemoPageState extends State<DemoPage>
 }
 
 class _RouteListView extends StatelessWidget {
-  final Map<String, WidgetBuilder> routes;
+  final Map<String, WidgetBuilder>? routes;
 
   const _RouteListView({
-    @required this.routes,
+    required this.routes,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: routes.keys
+      children: routes!.keys
           .map((routeName) => Card(
         child: ListTile(
           title: Text(routeName),
