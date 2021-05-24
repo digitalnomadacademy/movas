@@ -41,7 +41,7 @@ class StoreProvider<T extends BaseStore, U> extends MultiProvider {
 
 /// [T] Is Store that you are providing, and [U] and [I] are observables
 class StoreProvider2<T extends BaseStore, U, I> extends MultiProvider {
-  final Widget child;
+  final Widget? child;
   final T Function(BuildContext) storeBuilder;
 
   StoreProvider2({
