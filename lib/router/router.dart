@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:movas/helper/logger.dart';
 import 'package:movas/router/demo_page/demo_page.dart';
+
+import '../movas.dart';
 
 /// use this class to make easy distinction between test routes,
 /// and demo page to check on that stuff
@@ -34,3 +37,24 @@ class Router {
 
 }
 
+class FadeTransitionRouteBuilder extends PageRouteBuilder {
+  FadeTransitionRouteBuilder(Widget page)
+      : super(
+    pageBuilder: (BuildContext context, Animation<double> animation,
+        Animation<double> secondaryAnimation) {
+      return page;
+    },
+    transitionDuration: Duration(milliseconds: Movas.transitionDurationInMilliseconds),
+    transitionsBuilder: (BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+        Widget child) {
+      return Align(
+        child: FadeTransition(
+          opacity: animation,
+          child: child,
+        ),
+      );
+    },
+  );
+}

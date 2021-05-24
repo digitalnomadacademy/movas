@@ -25,7 +25,7 @@ class _DemoPageState extends State<DemoPage>
   void initState() {
     super.initState();
     _tabController =
-        TabController(vsync: this, length: myTabs.length, initialIndex: 1);
+        TabController(vsync: this, length: myTabs.length, initialIndex: 0);
   }
 
   @override
