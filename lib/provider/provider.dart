@@ -45,7 +45,7 @@ class StoreProvider2<T extends BaseStore, U, I> extends MultiProvider {
   final T Function(BuildContext) storeBuilder;
 
   StoreProvider2({
-    required this.child,
+    this.child,
     required this.storeBuilder,
   })  : assert(U != null),
         assert(I != null),
