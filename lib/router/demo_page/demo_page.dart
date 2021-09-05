@@ -68,11 +68,11 @@ class _RouteListView extends StatelessWidget {
     return ListView(
       children: routes!.keys
           .map((routeName) => Card(
-        child: ListTile(
-          title: Text(routeName),
-          onTap: () => Navigator.pushNamed(context, routeName),
-        ),
-      ))
+                child: ListTile(
+                  title: Text(routeName),
+                  onTap: () => Navigator.pushNamed(context, routeName),
+                ),
+              ))
           .toList(),
     );
   }
