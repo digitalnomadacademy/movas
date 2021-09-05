@@ -11,8 +11,4 @@ export 'package:rxdart/subjects.dart';
 
 class Movas {
   static const int transitionDurationInMilliseconds = 500;
-
-  static void log(dynamic message) {
-    movasLogger.info(message);
-  }
 }
