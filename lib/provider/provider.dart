@@ -101,7 +101,7 @@ abstract class BaseStore {
 
 abstract class Store<T> extends BaseStore {
   Map<Type, BehaviorSubject> _o$ = {
-    T: BehaviorSubject<T?>(sync: true),
+    T: BehaviorSubject<T>(sync: true),
   };
 
   @override
