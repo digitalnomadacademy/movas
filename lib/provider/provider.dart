@@ -14,11 +14,11 @@ class StaticProvider {
 
 /// [T] Is Store that you are providing, and [U] is observable
 class StoreProvider<T extends BaseStore, U> extends MultiProvider {
-  final Widget child;
+  final Widget? child;
   final T Function(BuildContext) storeBuilder;
 
   StoreProvider({
-    required this.child,
+    this.child,
     required this.storeBuilder,
   }) : super(
           child: child,
@@ -40,11 +40,11 @@ class StoreProvider<T extends BaseStore, U> extends MultiProvider {
 
 /// [T] Is Store that you are providing, and [U] and [I] are observables
 class StoreProvider2<T extends BaseStore, U, I> extends MultiProvider {
-  final Widget child;
+  final Widget? child;
   final T Function(BuildContext) storeBuilder;
 
   StoreProvider2({
-    required this.child,
+    this.child,
     required this.storeBuilder,
   })  : assert(U != I),
         super(
@@ -140,11 +140,11 @@ abstract class Store4<T, U, A, C> extends BaseStore {
 }
 
 class MyStoreProvider<T extends BaseStore, U> extends MultiProvider {
-  final Widget child;
+  final Widget? child;
   final T Function(BuildContext) storeBuilder;
 
   MyStoreProvider({
-    required this.child,
+    this.child,
     required this.storeBuilder,
   }) : super(
           child: child,
@@ -164,11 +164,11 @@ class MyStoreProvider<T extends BaseStore, U> extends MultiProvider {
 }
 
 class MyStoreProvider2<T extends BaseStore, U, S> extends MultiProvider {
-  final Widget child;
+  final Widget? child;
   final T Function(BuildContext) storeBuilder;
 
   MyStoreProvider2({
-    required this.child,
+    this.child,
     required this.storeBuilder,
   }) : super(
           child: child,
@@ -194,11 +194,11 @@ class MyStoreProvider2<T extends BaseStore, U, S> extends MultiProvider {
 }
 
 class MyStoreProvider3<T extends BaseStore, U, S, A> extends MultiProvider {
-  final Widget child;
+  final Widget? child;
   final T Function(BuildContext) storeBuilder;
 
   MyStoreProvider3({
-    required this.child,
+    this.child,
     required this.storeBuilder,
   }) : super(
           child: child,
@@ -230,11 +230,11 @@ class MyStoreProvider3<T extends BaseStore, U, S, A> extends MultiProvider {
 }
 
 class MyStoreProvider4<T extends BaseStore, U, S, A, C> extends MultiProvider {
-  final Widget child;
+  final Widget? child;
   final T Function(BuildContext) storeBuilder;
 
   MyStoreProvider4({
-    required this.child,
+    this.child,
     required this.storeBuilder,
   }) : super(
           child: child,
