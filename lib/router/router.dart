@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:movas/helper/logger.dart';
 import 'package:movas/router/demo_page/demo_page.dart';
 
 import '../movas.dart';
@@ -17,9 +16,9 @@ class Router {
   final bool useDemo;
 
   Router({
-    this.routes,
+    required this.routes,
     this.demoRoutes = const <String, WidgetBuilder>{},
-    this.initialRoute,
+    required this.initialRoute,
     this.useDemo = true,
   });
 
@@ -30,31 +29,30 @@ class Router {
 
   Map<String, WidgetBuilder> get _demoHome => useDemo
       ? {
-    demoRoute: (context) =>
-        DemoPage(testRoutes: demoRoutes, routes: routes)
-  }
+          demoRoute: (context) =>
+              DemoPage(testRoutes: demoRoutes, routes: routes)
+        }
       : {};
-
 }
 
 class FadeTransitionRouteBuilder extends PageRouteBuilder {
   FadeTransitionRouteBuilder(Widget page)
       : super(
-    pageBuilder: (BuildContext context, Animation<double> animation,
-        Animation<double> secondaryAnimation) {
-      return page;
-    },
-    transitionDuration: Duration(milliseconds: Movas.transitionDurationInMilliseconds),
-    transitionsBuilder: (BuildContext context,
-        Animation<double> animation,
-        Animation<double> secondaryAnimation,
-        Widget child) {
-      return Align(
-        child: FadeTransition(
-          opacity: animation,
-          child: child,
-        ),
-      );
-    },
-  );
+          pageBuilder: (BuildContext context, Animation<double> animation,
+              Animation<double> secondaryAnimation) {
+            return page;
+          },
+          transitionDuration:
+              Duration(milliseconds: Movas.transitionDurationInMilliseconds),
+          transitionsBuilder: (BuildContext context,
+                  Animation<double> animation,
+                  Animation<double> secondaryAnimation,
+                  Widget child) =>
+              Align(
+            child: FadeTransition(
+              opacity: animation,
+              child: child,
+            ),
+          ),
+        );
 }

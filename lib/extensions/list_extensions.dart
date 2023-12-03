@@ -1,7 +1,7 @@
 import 'dart:math';
 
 extension ListExt<T> on List<T> {
-  T get randomElement {
+  T? get randomElement {
     try {
       return this.elementAt(Random().nextInt(this.length));
     } catch (e) {
@@ -9,8 +9,8 @@ extension ListExt<T> on List<T> {
     }
   }
 
-  T get firstOrNull {
-    T first;
+  T? get firstOrNull {
+    T? first;
     try {
       first = this.first;
     } catch (e) {}
