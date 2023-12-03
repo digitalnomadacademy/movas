@@ -16,10 +16,12 @@ class StaticProvider {
 class StoreProvider<T extends BaseStore, U> extends MultiProvider {
   final Widget? child;
   final T Function(BuildContext) storeBuilder;
+  final U initialDataU;
 
   StoreProvider({
     this.child,
     required this.storeBuilder,
+    required this.initialDataU,
   }) : super(
           child: child,
           providers: [
@@ -32,7 +34,7 @@ class StoreProvider<T extends BaseStore, U> extends MultiProvider {
               lazy: false,
               create: (context) =>
                   StaticProvider.of<T>(context).o$[U] as BehaviorSubject<U>,
-              initialData: BehaviorSubject<U>().value,
+              initialData: initialDataU,
             )
           ],
         );
@@ -42,10 +44,14 @@ class StoreProvider<T extends BaseStore, U> extends MultiProvider {
 class StoreProvider2<T extends BaseStore, U, I> extends MultiProvider {
   final Widget? child;
   final T Function(BuildContext) storeBuilder;
+  final U initialDataU;
+  final I initialDataI;
 
   StoreProvider2({
     this.child,
     required this.storeBuilder,
+    required this.initialDataU,
+    required this.initialDataI,
   })  : assert(U != I),
         super(
           child: child,
@@ -59,13 +65,13 @@ class StoreProvider2<T extends BaseStore, U, I> extends MultiProvider {
               create: (context) =>
                   StaticProvider.of<T>(context).o$[U] as BehaviorSubject<U>,
               lazy: false,
-              initialData: BehaviorSubject<U>().value,
+              initialData: initialDataU,
             ),
             StreamProvider<I>(
               create: (context) =>
                   StaticProvider.of<T>(context).o$[I] as BehaviorSubject<I>,
               lazy: false,
-              initialData: BehaviorSubject<I>().value,
+              initialData: initialDataI,
             ),
           ],
         );
@@ -142,10 +148,12 @@ abstract class Store4<T, U, A, C> extends BaseStore {
 class MyStoreProvider<T extends BaseStore, U> extends MultiProvider {
   final Widget? child;
   final T Function(BuildContext) storeBuilder;
+  final U initialData;
 
   MyStoreProvider({
     this.child,
     required this.storeBuilder,
+    required this.initialData,
   }) : super(
           child: child,
           providers: [
@@ -157,7 +165,7 @@ class MyStoreProvider<T extends BaseStore, U> extends MultiProvider {
               lazy: false,
               create: (context) =>
                   StaticProvider.of<T>(context).o$[U] as BehaviorSubject<U>,
-              initialData: BehaviorSubject<U>().value,
+              initialData: initialData,
             )
           ],
         );
@@ -166,10 +174,14 @@ class MyStoreProvider<T extends BaseStore, U> extends MultiProvider {
 class MyStoreProvider2<T extends BaseStore, U, S> extends MultiProvider {
   final Widget? child;
   final T Function(BuildContext) storeBuilder;
+  final U initialDataU;
+  final S initialDataS;
 
   MyStoreProvider2({
     this.child,
     required this.storeBuilder,
+    required this.initialDataU,
+    required this.initialDataS,
   }) : super(
           child: child,
           providers: [
@@ -181,13 +193,13 @@ class MyStoreProvider2<T extends BaseStore, U, S> extends MultiProvider {
               lazy: false,
               create: (context) =>
                   StaticProvider.of<T>(context).o$[U] as BehaviorSubject<U>,
-              initialData: BehaviorSubject<U>().value,
+              initialData: initialDataU,
             ),
             StreamProvider<S>(
               lazy: false,
               create: (context) =>
                   StaticProvider.of<T>(context).o$[S] as BehaviorSubject<S>,
-              initialData: BehaviorSubject<S>().value,
+              initialData: initialDataS,
             )
           ],
         );
@@ -196,10 +208,16 @@ class MyStoreProvider2<T extends BaseStore, U, S> extends MultiProvider {
 class MyStoreProvider3<T extends BaseStore, U, S, A> extends MultiProvider {
   final Widget? child;
   final T Function(BuildContext) storeBuilder;
+  final U initialDataU;
+  final S initialDataS;
+  final A initialDataA;
 
   MyStoreProvider3({
     this.child,
     required this.storeBuilder,
+    required this.initialDataU,
+    required this.initialDataS,
+    required this.initialDataA,
   }) : super(
           child: child,
           providers: [
@@ -211,19 +229,18 @@ class MyStoreProvider3<T extends BaseStore, U, S, A> extends MultiProvider {
               lazy: false,
               create: (context) =>
                   StaticProvider.of<T>(context).o$[U] as BehaviorSubject<U>,
-              initialData: BehaviorSubject<U>().value,
+              initialData: initialDataU,
             ),
             StreamProvider<S>(
-              lazy: false,
-              create: (context) =>
-                  StaticProvider.of<T>(context).o$[S] as BehaviorSubject<S>,
-              initialData: BehaviorSubject<S>().value,
-            ),
+                lazy: false,
+                create: (context) =>
+                    StaticProvider.of<T>(context).o$[S] as BehaviorSubject<S>,
+                initialData: initialDataS),
             StreamProvider<A>(
               lazy: false,
               create: (context) =>
                   StaticProvider.of<T>(context).o$[A] as BehaviorSubject<A>,
-              initialData: BehaviorSubject<A>().value,
+              initialData: initialDataA,
             )
           ],
         );
@@ -232,10 +249,18 @@ class MyStoreProvider3<T extends BaseStore, U, S, A> extends MultiProvider {
 class MyStoreProvider4<T extends BaseStore, U, S, A, C> extends MultiProvider {
   final Widget? child;
   final T Function(BuildContext) storeBuilder;
+  final U initialDataU;
+  final S initialDataS;
+  final A initialDataA;
+  final C initialDataC;
 
   MyStoreProvider4({
     this.child,
     required this.storeBuilder,
+    required this.initialDataU,
+    required this.initialDataS,
+    required this.initialDataA,
+    required this.initialDataC,
   }) : super(
           child: child,
           providers: [
@@ -247,25 +272,23 @@ class MyStoreProvider4<T extends BaseStore, U, S, A, C> extends MultiProvider {
               lazy: false,
               create: (context) =>
                   StaticProvider.of<T>(context).o$[U] as BehaviorSubject<U>,
-              initialData: BehaviorSubject<U>().value,
+              initialData: initialDataU,
             ),
             StreamProvider<S>(
-              lazy: false,
-              create: (context) =>
-                  StaticProvider.of<T>(context).o$[S] as BehaviorSubject<S>,
-              initialData: BehaviorSubject<S>().value,
-            ),
+                lazy: false,
+                create: (context) =>
+                    StaticProvider.of<T>(context).o$[S] as BehaviorSubject<S>,
+                initialData: initialDataS),
             StreamProvider<A>(
-              lazy: false,
-              create: (context) =>
-                  StaticProvider.of<T>(context).o$[A] as BehaviorSubject<A>,
-              initialData: BehaviorSubject<A>().value,
-            ),
+                lazy: false,
+                create: (context) =>
+                    StaticProvider.of<T>(context).o$[A] as BehaviorSubject<A>,
+                initialData: initialDataA),
             StreamProvider<C>(
               lazy: false,
               create: (context) =>
                   StaticProvider.of<T>(context).o$[C] as BehaviorSubject<C>,
-              initialData: BehaviorSubject<C>().value,
+              initialData: initialDataC,
             ),
           ],
         );
